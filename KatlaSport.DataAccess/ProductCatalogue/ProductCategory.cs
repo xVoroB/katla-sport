@@ -47,6 +47,11 @@ namespace KatlaSport.DataAccess.ProductCatalogue
         public int LastUpdatedBy { get; set; }
 
         /// <summary>
+        /// Gets or sets a product category description.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or sets a timestamp when the product category was updated last time.
         /// </summary>
         public DateTime LastUpdated { get; set; }
