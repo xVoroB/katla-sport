@@ -85,7 +85,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <summary>
-        /// Updates an existed hive.
+        /// Updates an existing hive.
         /// </summary>
         /// <param name="hiveId">A hive identifier.</param>
         /// <param name="updateRequest">A <see cref="UpdateHiveRequest"/>.</param>
@@ -115,7 +115,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <summary>
-        /// Deletes an existed hive.
+        /// Deletes an existing hive.
         /// </summary>
         /// <param name="hiveId">A hive identifier.</param>
         /// <returns>A <see cref="Task"/>.</returns>
@@ -128,7 +128,7 @@ namespace KatlaSport.Services.HiveManagement
             }
 
             var dbHive = dbHives[0];
-            if (dbHive.IsDeleted == false)
+            if (dbHive.IsDeleted != false)
             {
                 throw new RequestedResourceHasConflictException();
             }
