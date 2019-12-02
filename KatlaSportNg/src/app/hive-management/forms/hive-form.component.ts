@@ -34,16 +34,25 @@ export class HiveFormComponent implements OnInit {
   onCancel() {
     this.navigateToHives();
   }
-  
+
   onSubmit() {
+    if (this.existed) {
+      this.hiveService.updateHive(this.hive).subscribe(p => this.navigateToHives());
+    }
+    else {
+      this.hiveService.addHive(this.hive).subscribe(p => this.navigateToHives());
+    }
   }
 
   onDelete() {
+    this.hiveService.setHiveStatus(this.hive.id, true).subscribe(h => this.ngOnInit());
   }
 
   onUndelete() {
+    this.hiveService.setHiveStatus(this.hive.id, false).subscribe(h => this.ngOnInit());
   }
 
   onPurge() {
+    this.hiveService.deleteHive(this.hive.id).subscribe(p => this.navigateToHives());
   }
 }
