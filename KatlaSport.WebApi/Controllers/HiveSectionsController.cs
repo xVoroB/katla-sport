@@ -70,9 +70,9 @@ namespace KatlaSport.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var hive = await _hiveSectionService.CreateHiveSectionAsync(createRequest);
-            var location = string.Format("api/sections/{0}", hive.Id);
-            return Created<HiveSection>(location, hive);
+            var hiveSection = await _hiveSectionService.CreateHiveSectionAsync(createRequest);
+            var location = string.Format("/api/sections/{0}", hiveSection.Id);
+            return Created<HiveSection>(location, hiveSection);
         }
 
         [HttpPut]

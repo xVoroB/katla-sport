@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets or sets hive id
         /// </summary>
- //       public int HiveId { get; set; }
+        public int HiveId { get; set; }
 
         /// <summary>
         /// Gets or sets a store hive name.
