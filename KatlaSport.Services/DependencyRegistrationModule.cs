@@ -1,7 +1,8 @@
-﻿using Autofac;
-
-namespace KatlaSport.Services
+﻿namespace KatlaSport.Services
 {
+    using Autofac;
+    using KatlaSport.Services.Interfaces;
+
     /// <summary>
     /// Represents an assembly dependency registration <see cref="Module"/>.
     /// </summary>
@@ -17,6 +18,10 @@ namespace KatlaSport.Services
             builder.RegisterType<ProductManagement.ProductCatalogueService>().As<ProductManagement.IProductCatalogueService>();
             builder.RegisterType<HiveManagement.HiveService>().As<HiveManagement.IHiveService>();
             builder.RegisterType<HiveManagement.HiveSectionService>().As<HiveManagement.IHiveSectionService>();
+            builder.RegisterType<EmployeeManagement.EmployeeRepositoryService>().As<IRepository<EmployeeManagement.Employee>>();
+            builder.RegisterType<EmployeeManagement.EmployeeCVRepositoryService>().As<IRepository<EmployeeManagement.EmployeeCV>>();
+            builder.RegisterType<EmployeeManagement.PositionRepositoryService>().As<IRepository<EmployeeManagement.Position>>();
+            builder.RegisterType<OrderManagement.OrderService>().As<OrderManagement.IOrderService>();
             builder.RegisterType<UserContext>().As<IUserContext>();
         }
     }

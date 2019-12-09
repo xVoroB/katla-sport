@@ -1,6 +1,6 @@
 ﻿namespace KatlaSport.DataAccess.EmployeeInfo
 {
-    public interface IEmployeeContext
+    public interface IEmployeeContext : IAsyncEntityStorage
     {
         IEntitySet<Employee> Employees { get; }
 

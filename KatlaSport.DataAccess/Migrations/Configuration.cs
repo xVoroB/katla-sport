@@ -1,13 +1,16 @@
-﻿using System;
-using System.Data.Entity.Migrations;
-using System.Diagnostics;
-using KatlaSport.DataAccess.CustomerCatalogue;
-using KatlaSport.DataAccess.ProductCatalogue;
-using KatlaSport.DataAccess.ProductStore;
-using KatlaSport.DataAccess.ProductStoreHive;
-
-namespace KatlaSport.DataAccess.Migrations
+﻿namespace KatlaSport.DataAccess.Migrations
 {
+    using System;
+    using System.Data.Entity.Migrations;
+    using System.Diagnostics;
+    using System.IO;
+    using KatlaSport.DataAccess.CustomerCatalogue;
+    using KatlaSport.DataAccess.EmployeeInfo;
+    using KatlaSport.DataAccess.Orders;
+    using KatlaSport.DataAccess.ProductCatalogue;
+    using KatlaSport.DataAccess.ProductStore;
+    using KatlaSport.DataAccess.ProductStoreHive;
+
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         /*
@@ -396,6 +399,150 @@ namespace KatlaSport.DataAccess.Migrations
                     Address = "Brest, Repina-7",
                     Phone = "+37529-9832872"
                 });
+
+            context.Positions.AddOrUpdate(
+                i => i.Id,
+                new Position
+                {
+                    Id = 1,
+                    Name = "Director"
+                },
+                new Position
+                {
+                    Id = 2,
+                    Name = "Master Chief"
+                },
+                new Position
+                {
+                    Id = 3,
+                    Name = "Master"
+                });
+
+            context.Employees.AddOrUpdate(
+                i => i.Id,
+                new Employee
+                {
+                    Id = 1,
+                    Name = "First",
+                    DateBirth = timestamp,
+                    PositionId = 2,
+                    ChiefEmployeeId = 2,
+                    EmployeeCVId = 1
+                },
+                new Employee
+                {
+                    Id = 2,
+                    Name = "Second",
+                    DateBirth = timestamp,
+                    PositionId = 1,
+                    EmployeeCVId = 2
+                },
+                new Employee
+                {
+                    Id = 3,
+                    Name = "Third",
+                    DateBirth = timestamp,
+                    PositionId = 3,
+                    ChiefEmployeeId = 1,
+                    EmployeeCVId = 3
+                });
+
+            context.EmployeeCVs.AddOrUpdate(
+                i => i.Id,
+                new EmployeeCV
+                {
+                    Id = 1,
+                    File = returnBytes("1.docx"),
+                    Name = "1.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 2,
+                    File = returnBytes("2.docx"),
+                    Name = "2.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 3,
+                    File = returnBytes("3.doc"),
+                    Name = "3.doc",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 4,
+                    File = returnBytes("4.docx"),
+                    Name = "4.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 5,
+                    File = returnBytes("5.docx"),
+                    Name = "5.docx",
+                    LastUpdate = timestamp
+                });
+
+            context.Orders.AddOrUpdate(
+                i => i.Id,
+                new Order
+                {
+                    Id = 1,
+                    CustomerId = 2,
+                    EmployeeId = 3,
+                    OrderAcceptanceDate = timestamp,
+                    OrderDispatchDate = timestamp
+                },
+                new Order
+                {
+                    Id = 2,
+                    CustomerId = 2,
+                    EmployeeId = 4,
+                    OrderAcceptanceDate = timestamp,
+                    OrderDispatchDate = timestamp
+                });
+
+            context.OrderProducts.AddOrUpdate(
+                i => i.Id,
+                new OrderProduct
+                {
+                    Id = 1,
+                    OrderId = 2,
+                    StoredItemId = 3
+                },
+                new OrderProduct
+                {
+                    Id = 2,
+                    OrderId = 3,
+                    StoredItemId = 1
+                },
+                new OrderProduct
+                {
+                    Id = 3,
+                    OrderId = 4,
+                    StoredItemId = 2
+                },
+                new OrderProduct
+                {
+                    Id = 4,
+                    OrderId = 1,
+                    StoredItemId = 4
+                });
+        }
+
+        private byte[] returnBytes(string fileName)
+        {
+            byte[] file;
+            using (FileStream fstream = new FileStream(@"d:\work\employeecv\" + fileName, FileMode.Open))
+            {
+                byte[] bytes = new byte[fstream.Length];
+                fstream.Read(bytes, 0, bytes.Length);
+                file = bytes;
+            }
+
+            return file;
         }
     }
 }
