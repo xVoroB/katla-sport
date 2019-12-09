@@ -1,6 +1,6 @@
 ﻿namespace KatlaSport.DataAccess.Orders
 {
-    public interface IOrderContext
+    public interface IOrderContext : IAsyncEntityStorage
     {
         IEntitySet<Order> Orders { get; }
 
