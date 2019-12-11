@@ -1,12 +1,14 @@
-﻿namespace KatlaSport.DataAccess.Migrations
+﻿using System.IO;
+using KatlaSport.DataAccess.EmployeeInfo;
+using KatlaSport.DataAccess.Orders;
+
+namespace KatlaSport.DataAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     using System.Diagnostics;
-    using System.IO;
     using KatlaSport.DataAccess.CustomerCatalogue;
-    using KatlaSport.DataAccess.EmployeeInfo;
-    using KatlaSport.DataAccess.Orders;
+        //using KatlaSport.DataAccess.EmployeeInfo;
     using KatlaSport.DataAccess.ProductCatalogue;
     using KatlaSport.DataAccess.ProductStore;
     using KatlaSport.DataAccess.ProductStoreHive;
@@ -93,7 +95,8 @@
                     IsDeleted = false,
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
-                    LastUpdated = timestamp
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "some"
                 },
                 new CatalogueProduct
                 {
@@ -104,7 +107,8 @@
                     IsDeleted = false,
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
-                    LastUpdated = timestamp
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "body"
                 },
                 new CatalogueProduct
                 {
@@ -115,7 +119,8 @@
                     IsDeleted = false,
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
-                    LastUpdated = timestamp
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "once"
                 },
                 new CatalogueProduct
                 {
@@ -126,7 +131,8 @@
                     IsDeleted = false,
                     CreatedBy = creatorId,
                     LastUpdatedBy = creatorId,
-                    LastUpdated = timestamp
+                    LastUpdated = timestamp,
+                    ManufacturerCode = "told me"
                 });
 
             context.StoreHives.AddOrUpdate(
@@ -418,121 +424,119 @@
                     Name = "Master"
                 });
 
-            context.Employees.AddOrUpdate(
-                i => i.Id,
-                new Employee
-                {
-                    Id = 1,
-                    Name = "First",
-                    DateBirth = timestamp,
-                    PositionId = 2,
-                    ChiefEmployeeId = 2,
-                    EmployeeCVId = 1
-                },
-                new Employee
-                {
-                    Id = 2,
-                    Name = "Second",
-                    DateBirth = timestamp,
-                    PositionId = 1,
-                    EmployeeCVId = 2
-                },
-                new Employee
-                {
-                    Id = 3,
-                    Name = "Third",
-                    DateBirth = timestamp,
-                    PositionId = 3,
-                    ChiefEmployeeId = 1,
-                    EmployeeCVId = 3
-                });
+            //context.Employees.AddOrUpdate(
+            //    i => i.Id,
+            //    new Employee
+            //    {
+            //        Name = "First",
+            //        DateBirth = timestamp,
+            //        PositionId = 2,
+            //        ChiefEmployeeId = 2,
+            //        EmployeeCVId = 1
+            //    },
+            //    new Employee
+            //    {
+            //        Name = "Second",
+            //        DateBirth = timestamp,
+            //        PositionId = 1,
+            //        ChiefEmployeeId = 2,
+            //        EmployeeCVId = 2
+            //    },
+            //    new Employee
+            //    {
+            //        Name = "Third",
+            //        DateBirth = timestamp,
+            //        PositionId = 3,
+            //        ChiefEmployeeId = 1,
+            //        EmployeeCVId = 3
+            //    });
 
-            context.EmployeeCVs.AddOrUpdate(
-                i => i.Id,
-                new EmployeeCV
-                {
-                    Id = 1,
-                    File = returnBytes("1.docx"),
-                    Name = "1.docx",
-                    LastUpdate = timestamp
-                },
-                new EmployeeCV
-                {
-                    Id = 2,
-                    File = returnBytes("2.docx"),
-                    Name = "2.docx",
-                    LastUpdate = timestamp
-                },
-                new EmployeeCV
-                {
-                    Id = 3,
-                    File = returnBytes("3.doc"),
-                    Name = "3.doc",
-                    LastUpdate = timestamp
-                },
-                new EmployeeCV
-                {
-                    Id = 4,
-                    File = returnBytes("4.docx"),
-                    Name = "4.docx",
-                    LastUpdate = timestamp
-                },
-                new EmployeeCV
-                {
-                    Id = 5,
-                    File = returnBytes("5.docx"),
-                    Name = "5.docx",
-                    LastUpdate = timestamp
-                });
+            //context.EmployeeCVs.AddOrUpdate(
+            //    i => i.Id,
+            //    new EmployeeCV
+            //    {
+            //        Id = 1,
+            //        File = ReturnBytes("1.docx"),
+            //        Name = "1.docx",
+            //        LastUpdate = timestamp
+            //    },
+            //    new EmployeeCV
+            //    {
+            //        Id = 2,
+            //        File = ReturnBytes("2.docx"),
+            //        Name = "2.docx",
+            //        LastUpdate = timestamp
+            //    },
+            //    new EmployeeCV
+            //    {
+            //        Id = 3,
+            //        File = ReturnBytes("3.doc"),
+            //        Name = "3.doc",
+            //        LastUpdate = timestamp
+            //    },
+            //    new EmployeeCV
+            //    {
+            //        Id = 4,
+            //        File = ReturnBytes("4.docx"),
+            //        Name = "4.docx",
+            //        LastUpdate = timestamp
+            //    },
+            //    new EmployeeCV
+            //    {
+            //        Id = 5,
+            //        File = ReturnBytes("5.docx"),
+            //        Name = "5.docx",
+            //        LastUpdate = timestamp
+            //    });
 
-            context.Orders.AddOrUpdate(
-                i => i.Id,
-                new Order
-                {
-                    Id = 1,
-                    CustomerId = 2,
-                    EmployeeId = 3,
-                    OrderAcceptanceDate = timestamp,
-                    OrderDispatchDate = timestamp
-                },
-                new Order
-                {
-                    Id = 2,
-                    CustomerId = 2,
-                    EmployeeId = 4,
-                    OrderAcceptanceDate = timestamp,
-                    OrderDispatchDate = timestamp
-                });
+            //context.Orders.AddOrUpdate(
+            //        i => i.Id,
+            //        new Order
+            //        {
+            //            Id = 1,
+            //            CustomerId = 2,
+            //            EmployeeId = 3,
+            //            OrderAcceptanceDate = timestamp,
+            //            OrderDispatchDate = timestamp
+            //        },
+            //        new Order
+            //        {
+            //            Id = 2,
+            //            CustomerId = 2,
+            //            EmployeeId = 4,
+            //            OrderAcceptanceDate = timestamp,
+            //            OrderDispatchDate = timestamp
+            //        });
 
-            context.OrderProducts.AddOrUpdate(
-                i => i.Id,
-                new OrderProduct
-                {
-                    Id = 1,
-                    OrderId = 2,
-                    StoredItemId = 3
-                },
-                new OrderProduct
-                {
-                    Id = 2,
-                    OrderId = 3,
-                    StoredItemId = 1
-                },
-                new OrderProduct
-                {
-                    Id = 3,
-                    OrderId = 4,
-                    StoredItemId = 2
-                },
-                new OrderProduct
-                {
-                    Id = 4,
-                    OrderId = 1,
-                    StoredItemId = 4
-                });
+            //context.OrderProducts.AddOrUpdate(
+            //    i => i.Id,
+            //    new OrderProduct
+            //    {
+            //        Id = 1,
+            //        OrderId = 2,
+            //        StoredItemId = 3
+            //    },
+            //    new OrderProduct
+            //    {
+            //        Id = 2,
+            //        OrderId = 3,
+            //        StoredItemId = 1
+            //    },
+            //    new OrderProduct
+            //    {
+            //        Id = 3,
+            //        OrderId = 4,
+            //        StoredItemId = 2
+            //    },
+            //    new OrderProduct
+            //    {
+            //        Id = 4,
+            //        OrderId = 1,
+            //        StoredItemId = 4
+                //});
         }
 
-        private byte[] returnBytes(string fileName)
+        private byte[] ReturnBytes(string fileName)
         {
             byte[] file;
             using (FileStream fstream = new FileStream(@"d:\work\employeecv\" + fileName, FileMode.Open))

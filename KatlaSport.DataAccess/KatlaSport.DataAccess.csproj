@@ -82,9 +82,13 @@
     <Compile Include="IAsyncEntityStorage.cs" />
     <Compile Include="IDatabaseLogger.cs" />
     <Compile Include="IEntitySet.cs" />
-    <Compile Include="Migrations\201912041103038_AddEmployeesAndOrdersTables.cs" />
-    <Compile Include="Migrations\201912041103038_AddEmployeesAndOrdersTables.Designer.cs">
-      <DependentUpon>201912041103038_AddEmployeesAndOrdersTables.cs</DependentUpon>
+    <Compile Include="Migrations\201912111529012_AllMigrations.cs" />
+    <Compile Include="Migrations\201912111529012_AllMigrations.Designer.cs">
+      <DependentUpon>201912111529012_AllMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111702400_SomeMigration.cs" />
+    <Compile Include="Migrations\201912111702400_SomeMigration.Designer.cs">
+      <DependentUpon>201912111702400_SomeMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Orders\IOrderContext.cs" />
     <Compile Include="Orders\Order.cs" />
@@ -112,18 +116,6 @@
     <Compile Include="ProductStore\StoreItemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueriableExtensions.cs" />
-    <Compile Include="Migrations\201805190719490_InitialCreate.cs" />
-    <Compile Include="Migrations\201805190719490_InitialCreate.Designer.cs">
-      <DependentUpon>201805190719490_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911281302372_AddCategoryDescription.cs" />
-    <Compile Include="Migrations\201911281302372_AddCategoryDescription.Designer.cs">
-      <DependentUpon>201911281302372_AddCategoryDescription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911300741483_AddProductDescriptionManCodePrice.cs" />
-    <Compile Include="Migrations\201911300741483_AddProductDescriptionManCodePrice.Designer.cs">
-      <DependentUpon>201911300741483_AddProductDescriptionManCodePrice.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,21 +126,15 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805190719490_InitialCreate.resx">
-      <DependentUpon>201805190719490_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911281302372_AddCategoryDescription.resx">
-      <DependentUpon>201911281302372_AddCategoryDescription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911300741483_AddProductDescriptionManCodePrice.resx">
-      <DependentUpon>201911300741483_AddProductDescriptionManCodePrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912041103038_AddEmployeesAndOrdersTables.resx">
-      <DependentUpon>201912041103038_AddEmployeesAndOrdersTables.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201912111529012_AllMigrations.resx">
+      <DependentUpon>201912111529012_AllMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111702400_SomeMigration.resx">
+      <DependentUpon>201912111702400_SomeMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

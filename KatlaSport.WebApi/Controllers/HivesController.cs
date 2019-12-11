@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using KatlaSport.Services.HiveManagement;
 using KatlaSport.WebApi.CustomFilters;
+using Microsoft.ApplicationInsights;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
 
@@ -55,6 +56,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetHiveSections(int hiveId)
         {
+            
             var hive = await _hiveSectionService.GetHiveSectionsAsync(hiveId);
             return Ok(hive);
         }

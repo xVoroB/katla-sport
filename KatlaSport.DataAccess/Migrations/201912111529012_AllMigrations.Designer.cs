@@ -7,13 +7,13 @@ namespace KatlaSport.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddEmployeesAndOrdersTables : IMigrationMetadata
+    public sealed partial class AllMigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddEmployeesAndOrdersTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AllMigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912041103038_AddEmployeesAndOrdersTables"; }
+            get { return "201912111529012_AllMigrations"; }
         }
         
         string IMigrationMetadata.Source
