@@ -10,6 +10,10 @@ import { ProductFormComponent } from './product-management/forms/product-form.co
 import { ProductCategoryListComponent } from './product-management/lists/product-category-list.component';
 import { ProductCategoryProductListComponent } from './product-management/lists/product-category-product-list.component';
 import { ProductListComponent } from './product-management/lists/product-list.component';
+import { EmployeeFormComponent } from './employee-management/forms/employee-form.component';
+import { EmployeeListComponent } from './employee-management/lists/employee-list.component';
+import { PositionListComponent } from './position-management/lists/position-list.component';
+import { PositionFormComponent } from './position-management/forms/position-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -28,6 +32,12 @@ const routes: Routes = [
   { path: 'hive/:hiveId/section', component: HiveSectionFormComponent },
   { path: 'hive/:hiveId/section/:id', component: HiveSectionFormComponent },
   { path: 'section', component: HiveSectionFormComponent },
+  { path: 'employees', component: EmployeeListComponent},
+  { path: 'employee', component: EmployeeFormComponent},
+  { path: 'employees/:id', component: EmployeeFormComponent},
+  { path: 'positions', component: PositionListComponent},
+  { path: 'position', component: PositionFormComponent},
+  { path: 'positions/:id', component: PositionFormComponent},
 
 ];
 

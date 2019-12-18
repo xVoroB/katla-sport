@@ -1,14 +1,13 @@
-﻿using System;
+﻿using KatlaSport.Services.HiveManagement;
+using KatlaSport.WebApi.CustomFilters;
+using Microsoft.Web.Http;
+using Swashbuckle.Swagger.Annotations;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using KatlaSport.Services.HiveManagement;
-using KatlaSport.WebApi.CustomFilters;
-using Microsoft.ApplicationInsights;
-using Microsoft.Web.Http;
-using Swashbuckle.Swagger.Annotations;
 
 namespace KatlaSport.WebApi.Controllers
 {

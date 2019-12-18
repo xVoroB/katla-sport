@@ -10,6 +10,8 @@ namespace KatlaSport.Services.EmployeeManagement
 
         public string Name { get; set; }
 
+        public int EmployeeId { get; set; }
+
         public DateTime LastUpdate { get; set; }
     }
 }

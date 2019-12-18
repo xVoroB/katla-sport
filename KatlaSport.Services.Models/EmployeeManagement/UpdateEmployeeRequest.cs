@@ -6,14 +6,14 @@ namespace KatlaSport.Services.EmployeeManagement
     {
         public int Id { get; set; }
 
-        public Employee HeadEmployee { get; set; }
+        public int ChiefEmployeeId { get; set; }
 
         public string Name { get; set; }
 
         public DateTime DateBirth { get; set; }
 
-        public Position Position { get; set; }
+        public int PositionId { get; set; }
 
-        public EmployeeCV EmployeeCV { get; set; }
+        public int EmployeeCVId { get; set; }
     }
 }

@@ -10,19 +10,19 @@ namespace KatlaSport.DataAccess.EmployeeInfo
 
         public string Name { get; set; }
 
-        public DateTime DateBirth { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public int PositionId { get; set; }
 
         public virtual Position Position { get; set; }
 
-        public int ChiefEmployeeId { get; set; }
+        public int? ChiefEmployeeId { get; set; }
 
         public virtual Employee ChiefEmployee { get; set; }
 
         public int EmployeeCVId { get; set; }
 
-        public virtual EmployeeCV EmployeeCVs { get; set; }
+        public virtual EmployeeCV EmployeeCV { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 

@@ -1,17 +1,15 @@
 ﻿using System.IO;
 using KatlaSport.DataAccess.EmployeeInfo;
-using KatlaSport.DataAccess.Orders;
 
 namespace KatlaSport.DataAccess.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    using System.Diagnostics;
     using KatlaSport.DataAccess.CustomerCatalogue;
-        //using KatlaSport.DataAccess.EmployeeInfo;
     using KatlaSport.DataAccess.ProductCatalogue;
     using KatlaSport.DataAccess.ProductStore;
     using KatlaSport.DataAccess.ProductStoreHive;
+    using System;
+    using System.Data.Entity.Migrations;
+    using System.Diagnostics;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -424,70 +422,72 @@ namespace KatlaSport.DataAccess.Migrations
                     Name = "Master"
                 });
 
-            //context.Employees.AddOrUpdate(
-            //    i => i.Id,
-            //    new Employee
-            //    {
-            //        Name = "First",
-            //        DateBirth = timestamp,
-            //        PositionId = 2,
-            //        ChiefEmployeeId = 2,
-            //        EmployeeCVId = 1
-            //    },
-            //    new Employee
-            //    {
-            //        Name = "Second",
-            //        DateBirth = timestamp,
-            //        PositionId = 1,
-            //        ChiefEmployeeId = 2,
-            //        EmployeeCVId = 2
-            //    },
-            //    new Employee
-            //    {
-            //        Name = "Third",
-            //        DateBirth = timestamp,
-            //        PositionId = 3,
-            //        ChiefEmployeeId = 1,
-            //        EmployeeCVId = 3
-            //    });
+            context.Employees.AddOrUpdate(
+                i => i.Id,
+                new Employee
+                {
+                    Id = 1,
+                    Name = "First",
+                    BirthDate = timestamp,
+                    PositionId = 2,
+                    ChiefEmployeeId = 2,
+                    EmployeeCVId = 1
+                },
+                new Employee
+                {
+                    Id = 2,
+                    Name = "Second",
+                    BirthDate = timestamp,
+                    PositionId = 1,
+                    EmployeeCVId = 2
+                },
+                new Employee
+                {
+                    Id = 3,
+                    Name = "Third",
+                    BirthDate = timestamp,
+                    PositionId = 3,
+                    ChiefEmployeeId = 1,
+                    EmployeeCVId = 3
+                });
 
-            //context.EmployeeCVs.AddOrUpdate(
-            //    i => i.Id,
-            //    new EmployeeCV
-            //    {
-            //        Id = 1,
-            //        File = ReturnBytes("1.docx"),
-            //        Name = "1.docx",
-            //        LastUpdate = timestamp
-            //    },
-            //    new EmployeeCV
-            //    {
-            //        Id = 2,
-            //        File = ReturnBytes("2.docx"),
-            //        Name = "2.docx",
-            //        LastUpdate = timestamp
-            //    },
-            //    new EmployeeCV
-            //    {
-            //        Id = 3,
-            //        File = ReturnBytes("3.doc"),
-            //        Name = "3.doc",
-            //        LastUpdate = timestamp
-            //    },
-            //    new EmployeeCV
-            //    {
-            //        Id = 4,
-            //        File = ReturnBytes("4.docx"),
-            //        Name = "4.docx",
-            //        LastUpdate = timestamp
-            //    },
-            //    new EmployeeCV
-            //    {
-            //        Id = 5,
-            //        File = ReturnBytes("5.docx"),
-            //        Name = "5.docx",
-            //        LastUpdate = timestamp
-            //    });
+            context.EmployeeCVs.AddOrUpdate(
+                i => i.Id,
+                new EmployeeCV
+                {
+                    Id = 1,
+                    File = MakeBytes("1.docx"),
+                    Name = "1.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 2,
+                    File = MakeBytes("2.docx"),
+                    Name = "2.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 3,
+                    File = MakeBytes("3.doc"),
+                    Name = "3.doc",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 4,
+                    File = MakeBytes("4.docx"),
+                    Name = "4.docx",
+                    LastUpdate = timestamp
+                },
+                new EmployeeCV
+                {
+                    Id = 5,
+                    File = MakeBytes("5.docx"),
+                    Name = "5.docx",
+                    LastUpdate = timestamp
+                });
 
             //context.Orders.AddOrUpdate(
             //        i => i.Id,
@@ -533,10 +533,10 @@ namespace KatlaSport.DataAccess.Migrations
             //        Id = 4,
             //        OrderId = 1,
             //        StoredItemId = 4
-                //});
+            //    });
         }
 
-        private byte[] ReturnBytes(string fileName)
+        private byte[] MakeBytes(string fileName)
         {
             byte[] file;
             using (FileStream fstream = new FileStream(@"d:\work\employeecv\" + fileName, FileMode.Open))

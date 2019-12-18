@@ -7,7 +7,7 @@ namespace KatlaSport.Services.EmployeeManagement
         public UpdateEmployeeRequestValidator()
         {
             RuleFor(i => i.Name).Length(3, 30);
-            RuleFor(i => i.Position).NotNull();
+            RuleFor(i => i.PositionId).NotNull();
         }
     }
 }

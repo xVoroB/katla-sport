@@ -82,13 +82,9 @@
     <Compile Include="IAsyncEntityStorage.cs" />
     <Compile Include="IDatabaseLogger.cs" />
     <Compile Include="IEntitySet.cs" />
-    <Compile Include="Migrations\201912111529012_AllMigrations.cs" />
-    <Compile Include="Migrations\201912111529012_AllMigrations.Designer.cs">
-      <DependentUpon>201912111529012_AllMigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912111702400_SomeMigration.cs" />
-    <Compile Include="Migrations\201912111702400_SomeMigration.Designer.cs">
-      <DependentUpon>201912111702400_SomeMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201912180549011_AllMigrations.cs" />
+    <Compile Include="Migrations\201912180549011_AllMigrations.Designer.cs">
+      <DependentUpon>201912180549011_AllMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Orders\IOrderContext.cs" />
     <Compile Include="Orders\Order.cs" />
@@ -129,11 +125,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912111529012_AllMigrations.resx">
-      <DependentUpon>201912111529012_AllMigrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912111702400_SomeMigration.resx">
-      <DependentUpon>201912111702400_SomeMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180549011_AllMigrations.resx">
+      <DependentUpon>201912180549011_AllMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

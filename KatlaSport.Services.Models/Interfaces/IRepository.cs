@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace KatlaSport.Services.Interfaces
 {
@@ -10,10 +11,10 @@ namespace KatlaSport.Services.Interfaces
 
         Task<List<TEntity>> GetAllEntitiesAsync();
 
-        Task AddEntityAsync(TEntity entity);
+        Task<IHttpActionResult> AddEntityAsync(TEntity entity);
 
-        Task UpdateEntityAsync(TEntity entity);
+        Task<IHttpActionResult> UpdateEntityAsync(TEntity entity);
 
-        Task RemoveEntityAsync(TEntity entity);
+        Task<IHttpActionResult> RemoveEntityAsync(TEntity entity);
     }
 }

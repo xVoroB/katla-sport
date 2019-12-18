@@ -22,6 +22,14 @@
             CreateMap<UpdateEmployeeCVRequest, DataAccessEmployeeCV>()
                 .ForMember(r => r.LastUpdate, opt => opt.MapFrom(p => DateTime.UtcNow));
             CreateMap<UpdatePositionRequest, DataAccessPosition>();
+
+            CreateMap<Employee, DataAccessEmployee>()
+                .ForMember(e => e.PositionId, opt => opt.MapFrom(p => p.Position.Id))
+                .ForMember(e => e.EmployeeCVId, opt => opt.MapFrom(p => p.EmployeeCV.Id))
+                .ForMember(e => e.ChiefEmployeeId, opt => opt.MapFrom(p => p.ChiefEmployee.Id))
+                .ForMember(p => p.Position, opt => opt.Ignore())
+                .ForMember(p => p.EmployeeCV, opt => opt.Ignore())
+                .ForMember(p => p.ChiefEmployee, opt => opt.Ignore());
         }
     }
 }

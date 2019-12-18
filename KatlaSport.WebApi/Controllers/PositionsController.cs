@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-//using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -39,8 +38,8 @@ namespace KatlaSport.WebApi.Controllers
             return Ok(positions);
         }
         [HttpGet]
-        [Route("getOne/{positionId:int:min(1)}")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of positions.", Type = typeof(Position[]))]
+        [Route("getSingle/{positionId:int:min(1)}")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns position.", Type = typeof(Position[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetPositionAsync(int positionId)
         {
@@ -64,8 +63,8 @@ namespace KatlaSport.WebApi.Controllers
             await _positionRepositoryService.AddEntityAsync(createRequest);
             var positions = await _positionRepositoryService.GetAllEntitiesAsync();
             var position = positions.Last();
-            var location = string.Format("/api/positions/getOne/{0}", position.Id);
-            return Created<Position>(location, position);
+            var location = string.Format("/api/positions/getSingle/{0}", position.Id);
+            return Ok();
         }
 
         [HttpPost]
@@ -75,7 +74,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> UpdateHive([FromUri] int id, [FromBody] Position updateRequest)
+        public async Task<IHttpActionResult> UpdatePosition([FromUri] int id, [FromBody] Position updateRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -84,7 +83,7 @@ namespace KatlaSport.WebApi.Controllers
 
             updateRequest.Id = id;
             await _positionRepositoryService.UpdateEntityAsync(updateRequest);
-            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
+            return Ok(ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent)).ToString());
         }
 
         [HttpPost]
@@ -94,10 +93,10 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> DeleteProduct([FromUri] int id)
+        public async Task<IHttpActionResult> DeletePosition([FromUri] int id)
         {
             await _positionRepositoryService.RemoveEntityAsync(new Position() { Id = id });
-            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
+            return Ok(ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent)).ToString());
         }
 
     }

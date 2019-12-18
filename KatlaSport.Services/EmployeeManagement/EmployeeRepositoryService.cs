@@ -41,8 +41,8 @@ namespace KatlaSport.Services.EmployeeManagement
 
         public async Task AddEntityAsync(Employee entity)
         {
-            var updateEmployee = Mapper.Map<Employee, UpdateEmployeeRequest>(entity);
-            var dbEmployee = Mapper.Map<UpdateEmployeeRequest, DbEmployee>(updateEmployee);
+            var dbEmployee = Mapper.Map<Employee, DbEmployee>(entity);
+
             _context.Employees.Add(dbEmployee);
 
             await _context.SaveChangesAsync();
